@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^4.4.0",
     "firebase": "^6.1.1",
     "mapbox-gl": "^1.0.0",
     "node-sass": "^4.12.0",
