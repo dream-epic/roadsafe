@@ -1,0 +1,9 @@
+.map-container {
+  grid-template-columns: 30px auto 30px;
+  height: calc(100vh - 80px);
+
+  .pothole-map {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+}
