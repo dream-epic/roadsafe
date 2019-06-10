@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import cheerio from "cheerio";
 import request from "request";
+import News from "../../components/News";
 
 export default class HomePage extends Component {
   state = {
@@ -34,7 +35,7 @@ export default class HomePage extends Component {
         });
 
       const selectedArticles = articles.slice(-10);
-      console.log(selectedArticles);
+      this.setState({ data: selectedArticles });
     });
   }
 
@@ -42,6 +43,19 @@ export default class HomePage extends Component {
     return (
       <div>
         <h1>This is the homepage!</h1>
+        {this.state.data.length ? (
+          this.state.data.map(e => (
+            <News
+              key={e.articleLink}
+              title={e.title}
+              imgSrc={e.imgSrc}
+              description={e.description}
+              articleLink={e.articleLink}
+            />
+          ))
+        ) : (
+          <h1>Data is loading...</h1>
+        )}
       </div>
     );
   }
