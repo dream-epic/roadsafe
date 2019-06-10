@@ -4,6 +4,7 @@ import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "./PotholeMap.scss";
 import { db, dbfirestore } from "../../firebase";
+import swal from "sweetalert";
 
 const Map = ReactMapboxGl({
   accessToken:
@@ -176,7 +177,10 @@ export default class PotholeMap extends Component {
                           db.collection("potholes")
                             .add(data)
                             .then(res => {
-                              console.log("Pothole Recorded");
+                              swal("Pothole reported, thank you!");
+                              document
+                                .querySelector(".mapboxgl-popup")
+                                .remove();
                             });
                         });
                     }
