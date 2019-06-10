@@ -16,7 +16,9 @@ export default class HomePage extends Component {
     console.log(url)
     request(url, (err, scrapeRes, html) => {
       const $ = cheerio.load(html);
-      console.log($.html())
+      $("a").attr("class", "cbs-thumbnail-link").each((i, element) => {
+        console.log($(element).attr("href"))
+      })
     });
   }
 
