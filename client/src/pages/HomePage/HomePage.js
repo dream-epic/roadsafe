@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import cheerio from "cheerio";
 import request from "request";
 import News from "../../components/News";
+import "bootstrap-css-only";
 
 export default class HomePage extends Component {
   state = {
@@ -34,7 +35,7 @@ export default class HomePage extends Component {
           articles.push(article);
         });
 
-      const selectedArticles = articles.slice(-10);
+      const selectedArticles = articles.slice(-12);
       this.setState({ data: selectedArticles });
     });
   }
@@ -42,9 +43,10 @@ export default class HomePage extends Component {
   render() {
     return (
       <div>
-        <h1>This is the homepage!</h1>
         {this.state.data.length ? (
-          this.state.data.map(e => (
+          <div className="row justify-content-around">
+          {this.state.data.map(e => (
+            <div className="col-12 col-md-6 col-lg-4">
             <News
               key={e.articleLink}
               title={e.title}
@@ -52,7 +54,9 @@ export default class HomePage extends Component {
               description={e.description}
               articleLink={e.articleLink}
             />
-          ))
+            </div>
+          ))}
+          </div>
         ) : (
           <h1>Data is loading...</h1>
         )}
