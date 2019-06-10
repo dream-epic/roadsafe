@@ -16,16 +16,25 @@ export default class HomePage extends Component {
   loadNewsData(url) {
     request(url, (err, scrapeRes, html) => {
       const $ = cheerio.load(html);
-      let articles = [];
 
+      let articles = [];
       $("a.cbs-thumbnail-link.content-type-video")
         .has(".thumbnail-wrapper")
         .each((i, element) => {
-          // links
-          // console.log($(element).attr("href"))
-          // images
-          // console.log($(element).children()[0].children[0].children[0].attribs["data-src"])
+          const article = {
+            articleLink: $(element).attr("href"),
+            imgSrc: $(element).children()[0].children[0].children[0].attribs[
+              "data-src"
+            ],
+            title: $(element).attr("title"),
+            description: $(element).children()[1].children[1].children[0].data
+          };
+
+          articles.push(article);
         });
+
+      const selectedArticles = articles.slice(-10);
+      console.log(selectedArticles);
     });
   }
 
