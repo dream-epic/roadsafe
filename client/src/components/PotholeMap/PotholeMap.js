@@ -3,6 +3,7 @@ import ReactMapboxGl, { MapContext } from "react-mapbox-gl";
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "./PotholeMap.scss";
+import db from "../../firebase";
 
 const Map = ReactMapboxGl({
   accessToken:
@@ -10,6 +11,28 @@ const Map = ReactMapboxGl({
 });
 
 export default class PotholeMap extends Component {
+  state = {
+    data: []
+  };
+
+  componentDidMount() {
+    db.collection("potholes").onSnapshot(res => {
+      const dbData = [];
+      res.docChanges().forEach(change => {
+        dbData.push(change.doc.data());
+      });
+      this.setState({ data: dbData });
+    });
+
+    // db.collection("expenses")
+    //   .add(item)
+    //   .then(res => {
+    //     error.textContent = "";
+    //     name.value = "";
+    //     cost.value = "";
+    //   });
+  }
+
   render() {
     return (
       <div className="map-container">
@@ -31,6 +54,8 @@ export default class PotholeMap extends Component {
                   data:
                     "https://raw.githubusercontent.com/heguanelvis/chi_pub_school_map/master/cps.geojson"
                 });
+
+                console.log(this.state.data);
 
                 map.addLayer({
                   id: "cpsPoints",
