@@ -50,16 +50,16 @@ export default class PotholeMap extends Component {
           <MapContext.Consumer>
             {map => {
               if (map._controls.length < 3) {
-                map.addSource("cpsSource", {
+                map.addSource("potholeSource", {
                   type: "geojson",
                   data:
-                    "https://raw.githubusercontent.com/heguanelvis/chi_pub_school_map/master/cps.geojson"
+                    "https://raw.githubusercontent.com/dream-epic/roadsafe/master/potholes.geojson"
                 });
 
                 map.addLayer({
-                  id: "cpsPoints",
+                  id: "potholePoints",
                   type: "circle",
-                  source: "cpsSource",
+                  source: "potholeSource",
                   paint: {
                     "circle-radius": 6,
                     "circle-color": "#d97d0d",
@@ -74,45 +74,37 @@ export default class PotholeMap extends Component {
                   }
                 });
 
-                map.on("click", "cpsPoints", e => {
-                  let content = `<h3 class="popup-school-title">${
-                    e.features[0].properties.longName
+                map.on("click", "potholePoints", e => {
+                  let content = `<h3>${
+                    e.features[0].properties.address
                   }</h3>`;
-                  content += `<h4>${e.features[0].properties.phone}</h4>`;
-                  content += `<h4>${e.features[0].properties.address}</h4>`;
-                  content += `<h4>${
-                    e.features[0].properties.enrollment
-                  } students enrolled</h4>`;
-                  content += `<h4><a class="popup-school-link" href="${
-                    e.features[0].properties.schoolProfile
-                  }"`;
-                  content += ` target="_blank">Check School Profile</a><h4>`;
+                  content += `<h4>${e.features[0].properties.reportedAt}</h4>`;
                   new mapboxgl.Popup()
                     .setLngLat(e.lngLat)
                     .setHTML(content)
                     .addTo(map);
                 });
 
-                map.on("mousemove", "cpsPoints", e => {
-                  map.setPaintProperty("cpsPoints", "circle-color", [
+                map.on("mousemove", "potholePoints", e => {
+                  map.setPaintProperty("potholePoints", "circle-color", [
                     "case",
                     [
                       "==",
-                      ["get", "longName"],
-                      e.features[0].properties.longName
+                      ["get", "address"],
+                      e.features[0].properties.address
                     ],
                     "#732002",
                     "#d97d0d"
                   ]);
                 });
 
-                map.on("mouseenter", "cpsPoints", () => {
+                map.on("mouseenter", "potholePoints", () => {
                   map.getCanvas().style.cursor = "pointer";
                 });
 
-                map.on("mouseleave", "cpsPoints", () => {
+                map.on("mouseleave", "potholePoints", () => {
                   map.getCanvas().style.cursor = "";
-                  map.setPaintProperty("cpsPoints", "circle-color", "#d97d0d");
+                  map.setPaintProperty("potholePoints", "circle-color", "#d97d0d");
                 });
 
                 const geocoder = new MapboxGeocoder({
