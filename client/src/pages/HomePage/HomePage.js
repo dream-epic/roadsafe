@@ -8,17 +8,24 @@ export default class HomePage extends Component {
   };
 
   componentDidMount() {
-    const url = "https://cors-anywhere.herokuapp.com/https://chicago.cbslocal.com/tag/potholes/";
+    const url =
+      "https://cors-anywhere.herokuapp.com/https://chicago.cbslocal.com/tag/potholes/";
     this.loadNewsData(url);
   }
 
   loadNewsData(url) {
-    console.log(url)
     request(url, (err, scrapeRes, html) => {
       const $ = cheerio.load(html);
-      $("a").attr("class", "cbs-thumbnail-link").each((i, element) => {
-        console.log($(element).attr("href"))
-      })
+      let articles = [];
+
+      $("a.cbs-thumbnail-link.content-type-video")
+        .has(".thumbnail-wrapper")
+        .each((i, element) => {
+          // links
+          // console.log($(element).attr("href"))
+          // images
+          // console.log($(element).children()[0].children[0].children[0].attribs["data-src"])
+        });
     });
   }
 
