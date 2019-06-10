@@ -16,14 +16,14 @@ export default class PotholeMap extends Component {
   };
 
   componentDidMount() {
-    db.collection("potholes").onSnapshot(res => {
-      const dbData = [];
-      res.docChanges().forEach(change => {
-        dbData.push(change.doc.data());
-      });
-      this.setState({ data: dbData });
-    });
-
+    // db.collection("potholes").onSnapshot(res => {
+    //   const dbData = [];
+    //   console.log(res.docChanges);
+    //   res.docChanges().forEach(change => {
+    //     dbData.push(change.doc.data());
+    //   });
+    //   this.setState({ data: dbData });
+    // });
     // db.collection("expenses")
     //   .add(item)
     //   .then(res => {
@@ -34,6 +34,7 @@ export default class PotholeMap extends Component {
   }
 
   render() {
+    console.log(this.state.data);
     return (
       <div className="map-container">
         <Map
@@ -54,8 +55,6 @@ export default class PotholeMap extends Component {
                   data:
                     "https://raw.githubusercontent.com/heguanelvis/chi_pub_school_map/master/cps.geojson"
                 });
-
-                console.log(this.state.data);
 
                 map.addLayer({
                   id: "cpsPoints",
