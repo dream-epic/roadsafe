@@ -19,6 +19,7 @@ font-family: 'Patua One', cursive;
   -webkit-box-shadow: -1px 4px 5px 0px $platinum;
   -moz-box-shadow: -1px 4px 5px 0px $platinum;
   box-shadow: -1px 4px 5px 0px $platinum;
+  align-items: center;
 }
 
 .nav-logo {
@@ -27,6 +28,10 @@ font-family: 'Patua One', cursive;
   align-content: center;
   font-family: 'Patua One', cursive;
   color: $blue;
+
+  h1 {
+    font-size: 1.8rem;
+  }
 }
 
 .nav-links {
@@ -36,6 +41,7 @@ font-family: 'Patua One', cursive;
   grid-auto-flow: column;
   grid-gap: 1.5em;
   font-weight: 700;
+  font-size: 1.1rem;
 
   a {
     color: $black;

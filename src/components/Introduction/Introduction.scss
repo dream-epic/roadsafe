@@ -10,8 +10,8 @@ $white: #ffffff;
   color: $white;
   margin-bottom: 0;
   overflow: hidden;
-  padding-top: 8.5rem;
-  padding-bottom: 8.5rem;
+  padding-top: 9rem;
+  padding-bottom: 9rem;
   position: relative;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
   z-index: 9999;
@@ -33,4 +33,36 @@ $white: #ffffff;
     opacity: 0.4;
     z-index: -1;
   }
+}
+
+.app-intro-title {
+  color: $black;
+  margin-top: 2.2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: "Patua One", cursive;
+}
+
+.app-intro-general {
+  color: $black;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.intro-icon {
+  font-size: 15vh;
+  color: $blue
+}
+
+.intro-icon-title {
+  font-size: 2rem;
+  color: $blue;
+  font-weight: 700;
+  font-family: "Patua One", cursive;
+}
+
+.intro-icon-lead {
+  font-size: 1.2rem;
+  color: $black;
+  font-weight: 600;
 }
