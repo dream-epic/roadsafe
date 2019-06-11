@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import ReactMapboxGl, { MapContext } from "react-mapbox-gl";
+import ReactMapboxGl, { MapContext, Source } from "react-mapbox-gl";
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "./PotholeMap.scss";
 import { db, dbfirestore } from "../../firebase";
 import swal from "sweetalert";
+import { Redirect } from "react-router-dom";
 
 const Map = ReactMapboxGl({
   accessToken:
@@ -17,33 +18,35 @@ export default class PotholeMap extends Component {
   };
 
   componentDidMount() {
-    db.collection("potholes")
-      .get()
-      .then(res => {
-        const dbData = {
-          type: "FeatureCollection",
-          features: []
+    db.collection("potholes").onSnapshot(res => {
+      const dbData = {
+        type: "FeatureCollection",
+        features: []
+      };
+      res.forEach(e => {
+        const phfeature = {
+          type: "Feature",
+          properties: {
+            address: e.data().address,
+            reportedAt: e.data().reportedAt.toDate()
+          },
+          geometry: {
+            type: "Point",
+            coordinates: [...e.data().lngLat]
+          }
         };
-        res.docs.forEach(e => {
-          const phfeature = {
-            type: "Feature",
-            properties: {
-              address: e.data().address,
-              reportedAt: e.data().reportedAt.toDate()
-            },
-            geometry: {
-              type: "Point",
-              coordinates: [...e.data().lngLat]
-            }
-          };
-          dbData.features.push(phfeature);
-        });
-        this.setState({ data: dbData });
+        dbData.features.push(phfeature);
       });
+      this.setState({ data: dbData });
+    });
   }
 
   render() {
-    console.log(this.state.data);
+    const MAP_SOURCE_OPTION = {
+      type: "geojson",
+      data: this.state.data
+    };
+
     if (this.state.data) {
       return (
         <div className="map-container">
@@ -57,15 +60,10 @@ export default class PotholeMap extends Component {
               width: "100%"
             }}
           >
+            <Source id="potholeSource" geoJsonSource={MAP_SOURCE_OPTION} />
             <MapContext.Consumer>
               {map => {
                 if (map._controls.length < 3) {
-                  map.addSource("potholeSource", {
-                    type: "geojson",
-                    data: this.state.data
-                    // "https://raw.githubusercontent.com/dream-epic/roadsafe/master/potholes.geojson"
-                  });
-
                   map.addLayer({
                     id: "potholePoints",
                     type: "circle",
@@ -136,32 +134,9 @@ export default class PotholeMap extends Component {
 
                   map.addControl(new mapboxgl.NavigationControl());
 
-                  // geocoder add point
-                  map.addSource("pothole-report-point", {
-                    type: "geojson",
-                    data: {
-                      type: "FeatureCollection",
-                      features: []
-                    }
-                  });
-
-                  map.addLayer({
-                    id: "picked-point",
-                    source: "pothole-report-point",
-                    type: "circle",
-                    paint: {
-                      "circle-radius": 7,
-                      "circle-color": "#14213D"
-                    }
-                  });
-
                   geocoder.on("result", e => {
                     if (document.querySelector(".mapboxgl-popup"))
                       document.querySelector(".mapboxgl-popup").remove();
-
-                    map
-                      .getSource("pothole-report-point")
-                      .setData(e.result.geometry);
 
                     const data = {
                       address: e.result.place_name,
@@ -169,7 +144,7 @@ export default class PotholeMap extends Component {
                       reportedAt: dbfirestore.Timestamp.fromDate(new Date())
                     };
 
-                    function reportPothole(data) {
+                    function reportPothole(data, mapObj) {
                       document
                         .getElementById("report-btn")
                         .addEventListener("click", () => {
@@ -181,6 +156,10 @@ export default class PotholeMap extends Component {
                               document
                                 .querySelector(".mapboxgl-popup")
                                 .remove();
+                              document.querySelector(
+                                ".mapboxgl-ctrl-geocoder--input"
+                              ).value = "";
+                              mapObj.forceUpdate();
                             });
                         });
                     }
@@ -195,7 +174,7 @@ export default class PotholeMap extends Component {
 
                     popup.addTo(map);
 
-                    reportPothole(data);
+                    reportPothole(data, this);
                   });
                 }
               }}
