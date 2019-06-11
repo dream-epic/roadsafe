@@ -4,6 +4,11 @@ $orange: #FCA311;
 $platinum: #E5E5E5;
 $white: #ffffff;
 
+/*
+font-family: 'Montserrat', sans-serif;
+font-family: 'Patua One', cursive;
+*/
+
 .app-navbar {
   display: grid;
   min-height: 80px;
@@ -20,7 +25,7 @@ $white: #ffffff;
   display: grid;
   justify-content: start;
   align-content: center;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Patua One', cursive;
   color: $blue;
 }
 
@@ -30,7 +35,7 @@ $white: #ffffff;
   align-content: center;
   grid-auto-flow: column;
   grid-gap: 1.5em;
-  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
 
   a {
     color: $black;
