@@ -1,0 +1,33 @@
+.card {
+  margin: 1rem auto;
+  font-family: "Lato", sans-serif;
+  height: 32rem;
+
+}
+
+.card-img-top {
+  height: 12rem;
+
+}
+
+.card-title {
+  font-size: 22px;
+  font-weight: bold;
+
+}
+
+.card-text {
+  font-size: 15px;
+
+}
+
+.btn.btn-primary {
+  font-size: 13px;
+
+}
+
+.card:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    opacity: 0.8;
+}
+
