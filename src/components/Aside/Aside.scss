@@ -1,0 +1,27 @@
+$black: #000000;
+$blue: #14213d;
+$orange: #fca311;
+$platinum: #e5e5e5;
+$white: #ffffff;
+
+.aside-potholes-intro {
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.aside-potholes-title {
+  font-size: 2.2rem;
+  font-family: "Patua One", cursive;
+  font-weight: 700;
+  color: $blue;
+  margin-bottom: 0;
+}
+
+.container.aside-p-wrapper {
+    padding-top: 0.8rem;
+}
+
+.aside-potholes-p {
+    font-size: 1.2rem;
+    font-weight: 600;
+}

@@ -1,8 +1,11 @@
-.text-center {
-    text-align: center;
+.container {
+    padding-top: 2rem;
 }
 
-.bot-center {
-    width: 350px;
-    margin: 0 auto;
+.patched-iframe {
+    width: 800px;
+    height: 600px;
+    border: 0; 
+    padding: 0; 
+    margin: 0;
 }
