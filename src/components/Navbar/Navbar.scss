@@ -1,8 +1,10 @@
 $black: #000000;
-$blue: #14213D;
-$orange: #FCA311;
-$platinum: #E5E5E5;
+$blue: #14213d;
+$orange: #fca311;
+$platinum: #e5e5e5;
 $white: #ffffff;
+
+$breakpoint-phone: 500px;
 
 /*
 font-family: 'Montserrat', sans-serif;
@@ -14,7 +16,7 @@ font-family: 'Patua One', cursive;
   min-height: 80px;
   grid-auto-flow: column;
   background-color: $white;
-  grid-gap: 1.5em;
+  grid-gap: 1.5rem;
   padding: 0 40px;
   -webkit-box-shadow: -1px 4px 5px 0px $platinum;
   -moz-box-shadow: -1px 4px 5px 0px $platinum;
@@ -26,7 +28,7 @@ font-family: 'Patua One', cursive;
   display: grid;
   justify-content: start;
   align-content: center;
-  font-family: 'Patua One', cursive;
+  font-family: "Patua One", cursive;
   color: $blue;
 
   h1 {
@@ -39,7 +41,7 @@ font-family: 'Patua One', cursive;
   justify-content: right;
   align-content: center;
   grid-auto-flow: column;
-  grid-gap: 1.5em;
+  grid-gap: 1.5rem;
   font-weight: 700;
   font-size: 1.1rem;
 
@@ -51,5 +53,23 @@ font-family: 'Patua One', cursive;
       color: $orange;
       text-decoration: none;
     }
+  }
+}
+
+@media (max-width: $breakpoint-phone) {
+  .app-navbar {
+    grid-gap: 1rem;
+    padding: 0 20px;
+  }
+  
+  .nav-logo {
+    h1 {
+      font-size: 1.3rem;
+    }
+  }
+
+  .nav-links {
+    grid-gap: 1rem;
+    font-size: 0.9rem;
   }
 }
