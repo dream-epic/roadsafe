@@ -8,8 +8,7 @@ import swal from "sweetalert";
 import Spinner from "../Spinner";
 
 const Map = ReactMapboxGl({
-  accessToken:
-    "pk.eyJ1IjoiaGVndWFuZWx2aXMiLCJhIjoiY2p0cWFnMmR4MGRlOTQ1bXVkNGhqbnYxYiJ9.g43Zo8jIYEj6l-o_3MD3Hg"
+  accessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 });
 
 export default class PotholeMap extends Component {
@@ -46,7 +45,6 @@ export default class PotholeMap extends Component {
       type: "geojson",
       data: this.state.data
     };
-
     if (this.state.data) {
       return (
         <div className="map-container">
@@ -70,7 +68,7 @@ export default class PotholeMap extends Component {
                     source: "potholeSource",
                     paint: {
                       "circle-radius": 6,
-                      "circle-color": "#d97d0d",
+                      "circle-color": "#fca311",
                       "circle-opacity": [
                         "case",
                         ["boolean", ["feature-state", "hover"], false],
@@ -83,10 +81,10 @@ export default class PotholeMap extends Component {
                   });
 
                   map.on("click", "potholePoints", e => {
-                    let content = `<h3>${
+                    let content = `<h3 class="pothole-info-address text-center">${
                       e.features[0].properties.address
                     }</h3>`;
-                    content += `<h4>${
+                    content += `<h4 class="pothole-info-date text-center">${
                       e.features[0].properties.reportedAt
                     }</h4>`;
                     new mapboxgl.Popup()
@@ -104,7 +102,7 @@ export default class PotholeMap extends Component {
                         e.features[0].properties.address
                       ],
                       "#732002",
-                      "#d97d0d"
+                      "#fca311"
                     ]);
                   });
 
@@ -117,7 +115,7 @@ export default class PotholeMap extends Component {
                     map.setPaintProperty(
                       "potholePoints",
                       "circle-color",
-                      "#d97d0d"
+                      "#fca311"
                     );
                   });
 
@@ -165,7 +163,7 @@ export default class PotholeMap extends Component {
                     }
 
                     let content =
-                      "<h2>Do you want to report a pothole here?</h2>";
+                      "<h3 class='pothole-info-address text-center'>Do you want to report a pothole here?</h3>";
                     content += `<div class="report-btn-wrapper"><button class="btn btn--stripe btn--radius" id="report-btn">Report this Location</button></div>`;
 
                     const popup = new mapboxgl.Popup()

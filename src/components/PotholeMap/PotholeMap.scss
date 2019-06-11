@@ -1,3 +1,10 @@
+$breakpoint-phone: 500px;
+$black: #000000;
+$blue: #14213d;
+$orange: #fca311;
+$platinum: #e5e5e5;
+$white: #ffffff;
+
 .map-container {
   grid-template-columns: 30px auto 30px;
   height: calc(100vh - 80px);
@@ -17,11 +24,22 @@
 }
 
 .mapboxgl-ctrl-geocoder {
-  min-width: 400px;
+  width: 400px;
 }
 
 h2 {
   text-align: center;
+}
+
+.pothole-info-address {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $blue;
+}
+
+.pothole-info-date {
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .report-btn-wrapper {
@@ -30,6 +48,12 @@ h2 {
   #report-btn {
     text-align: center;
   }
+}
+
+.swal-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
 }
 
 $color-gray: #666;
@@ -43,93 +67,104 @@ $border-color: $color-gray;
 $border-color-hover: $color-black;
 
 @mixin reset-button {
-    overflow : visible;
-    margin : 0;
-    padding : 0;
-    border : 0;
-    background : transparent;
-    font : inherit;
-    line-height : normal;
-    cursor : pointer;
-    -moz-user-select : text;
-    
-    &:-moz-focus-inner {
-        padding : 0;
-        border : 0;
-    }
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  line-height: normal;
+  cursor: pointer;
+  -moz-user-select: text;
+
+  &:-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
 }
 
 @keyframes stripe-slide {
-    0% { background-position: 0% 0; }
-    100% { background-position: 100% 0; }
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
 }
 
 .btn {
-    @include reset-button;
-    display: block;
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 8px 18px 11px;
-    background-color: $btn-background;
-    color: $btn-color;
-    border: 2px solid $border-color;
-    border-radius: 6px;
-    margin-bottom: 8px;
-    transition: all .5s ease;
-    
-    &--stripe {
-        overflow: hidden;
-        position: relative;
-        
-        &:after {
-            content: '';
-            display: block;
-            height: $stripe-height;
-            width: 100%;
-            background-image: repeating-linear-gradient(
-                45deg,
-                $border-color,
-                $border-color 1px,
-                transparent 2px,
-                transparent 5px
-            );
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-top: 1px solid $border-color;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            background-size: $stripe-height $stripe-height;
-        }
+  @include reset-button;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 8px 18px 11px;
+  background-color: $btn-background;
+  color: $btn-color;
+  border: 2px solid $border-color;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  transition: all 0.5s ease;
 
-        &:hover {
-            background-color: $btn-background-hover;
-            color: $btn-color-hover;
-            border-color: $border-color-hover;
+  &--stripe {
+    overflow: hidden;
+    position: relative;
 
-            &:after {
-                background-image: repeating-linear-gradient(
-                    45deg,
-                    $btn-color-hover,
-                    $btn-color-hover 1px,
-                    transparent 2px,
-                    transparent 5px
-                );
-                border-top: 1px solid $border-color-hover;
-                animation: stripe-slide 12s infinite linear forwards;
-            }
-        }
+    &:after {
+      content: "";
+      display: block;
+      height: $stripe-height;
+      width: 100%;
+      background-image: repeating-linear-gradient(
+        45deg,
+        $border-color,
+        $border-color 1px,
+        transparent 2px,
+        transparent 5px
+      );
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-top: 1px solid $border-color;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-size: $stripe-height $stripe-height;
+    }
 
-        &:active,&:focus {
-          outline: none;
-        }
+    &:hover {
+      background-color: $btn-background-hover;
+      color: $btn-color-hover;
+      border-color: $border-color-hover;
+
+      &:after {
+        background-image: repeating-linear-gradient(
+          45deg,
+          $btn-color-hover,
+          $btn-color-hover 1px,
+          transparent 2px,
+          transparent 5px
+        );
+        border-top: 1px solid $border-color-hover;
+        animation: stripe-slide 12s infinite linear forwards;
+      }
     }
-    
-    &--large {
-        width: 50%;
+
+    &:active,
+    &:focus {
+      outline: none;
     }
-    
-    &--radius {
-        border-radius: 36px;
-    }
+  }
+
+  &--large {
+    width: 50%;
+  }
+
+  &--radius {
+    border-radius: 36px;
+  }
+}
+
+@media (max-width: $breakpoint-phone) {
+  .mapboxgl-ctrl-geocoder {
+    width: 100%;
+  }
 }
