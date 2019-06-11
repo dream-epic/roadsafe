@@ -1,21 +1,63 @@
+$black: #000000;
+$blue: #14213d;
+$orange: #fca311;
+$platinum: #e5e5e5;
+$white: #ffffff;
+
+/*
+font-family: 'Montserrat', sans-serif;
+font-family: 'Patua One', cursive;
+*/
+
 .card {
   margin: 1rem auto;
   min-height: 30rem;
+  width: 25rem;
+  border: 1px solid $blue !important;
+  border-radius: 2% !important;
 }
 
 .card-img-top {
   height: 12rem;
+  border-bottom: 2px solid $blue;
+  border-radius: 2%;
 }
 
 .card-title {
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .card-text {
   font-size: 1rem;
+  font-weight: 600
 }
 
-.btn.btn-primary {
+.btn.btn-primary.view-article-btn {
   font-size: 1rem;
+  background: $platinum;
+  color: $orange;
+  display: inline-block;
+  font-weight: 700;
+  border: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: $orange;
+    color: $platinum;
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+  background: $orange !important;
+  color: $platinum !important;
+  border: none;
+  outline: none;
+  box-shadow: none !important;
 }

@@ -1,4 +1,24 @@
+$black: #000000;
+$blue: #14213d;
+$orange: #fca311;
+$platinum: #e5e5e5;
+$white: #ffffff;
+
 .row {
   margin-left: auto;
   margin-right: auto;
 }
+
+.news-section {
+  background: $platinum;
+  padding-top: 2.2rem;
+  margin-top: 1.2rem;
+}
+
+.news-section-title {
+  color: $black;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: "Patua One", cursive;
+}
+

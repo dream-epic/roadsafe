@@ -1,0 +1,33 @@
+$spinner-size: 5rem;
+$spinner-thickness: 1.2em;
+$animation-speed: 0.6s;
+
+.spinner-container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.spinner {
+    border-radius: 50%;
+    width: $spinner-size;
+    height: $spinner-size;
+    border: $spinner-thickness solid;
+    border-top-color: #C70039;
+    border-right-color: #FF5733;
+    border-bottom-color: #ff9800;
+    border-left-color: #900C3E;
+    -webkit-animation: $animation-speed infinite spin ease-in-out;
+    animation: $animation-speed infinite spin ease-in-out;
+}
+
+@keyframes spin{
+  0%{
+    -webkit-transform:rotate(0);
+    transform:rotate(0);
+  }
+  100%{
+    -webkit-transform:rotate(360deg);
+    transform:rotate(360deg);
+  }
+}

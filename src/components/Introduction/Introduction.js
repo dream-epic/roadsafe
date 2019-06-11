@@ -5,7 +5,7 @@ export default function Introduction() {
   return (
     <>
       <div className="jumbotron text-center splash">
-        <h1>RoadSafe</h1>
+        <h1 className="animated infinite pulse">RoadSafe</h1>
         <p className="lead">
           Work with us to remove potholes and build a better Chicago!
         </p>

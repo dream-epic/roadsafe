@@ -5,6 +5,7 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "./PotholeMap.scss";
 import { db, dbfirestore } from "../../firebase";
 import swal from "sweetalert";
+import Spinner from "../Spinner";
 
 const Map = ReactMapboxGl({
   accessToken:
@@ -181,11 +182,6 @@ export default class PotholeMap extends Component {
           </Map>
         </div>
       );
-    } else
-      return (
-        <div>
-          There are too many potholes...please wait patiently for map to load...
-        </div>
-      );
+    } else return <Spinner />;
   }
 }

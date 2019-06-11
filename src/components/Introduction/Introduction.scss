@@ -15,7 +15,11 @@ $white: #ffffff;
   position: relative;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
   z-index: 9999;
-  font-family: "Patua One", cursive;
+ 
+  h1 {
+    font-size: 2.8rem;
+    font-family: "Patua One", cursive;
+  }
 
   .lead {
     font-family: "Montserrat", sans-serif;

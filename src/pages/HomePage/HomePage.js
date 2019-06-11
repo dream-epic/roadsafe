@@ -3,6 +3,7 @@ import cheerio from "cheerio";
 import request from "request";
 import News from "../../components/News";
 import Introduction from "../../components/Introduction";
+import Spinner from "../../components/Spinner";
 import "bootstrap-css-only";
 import "./HomePage.scss";
 
@@ -45,23 +46,29 @@ export default class HomePage extends Component {
   render() {
     return (
       <>
-        <Introduction />
         {this.state.data.length ? (
-          <div className="row justify-content-around align-items-stretch">
-            {this.state.data.map(e => (
-              <div className="col-12 col-md-6 col-lg-4">
-                <News
-                  key={e.articleLink}
-                  title={e.title}
-                  imgSrc={e.imgSrc}
-                  description={e.description}
-                  articleLink={e.articleLink}
-                />
+          <>
+            <Introduction />
+            <div className="news-section">
+              <h1 className="news-section-title text-center">
+                Latest News about Potholes
+              </h1>
+              <div className="row justify-content-around align-items-stretch">
+                {this.state.data.map(e => (
+                  <div className="col-12 col-lg-6 col-xl-4" key={e.articleLink}>
+                    <News
+                      title={e.title}
+                      imgSrc={e.imgSrc}
+                      description={e.description}
+                      articleLink={e.articleLink}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          </>
         ) : (
-          <h1>Data is loading...</h1>
+          <Spinner />
         )}
       </>
     );
