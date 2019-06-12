@@ -24,7 +24,7 @@ $white: #ffffff;
 }
 
 .mapboxgl-ctrl-geocoder {
-  width: 400px;
+  min-width: 400px;
 }
 
 h2 {
@@ -165,6 +165,6 @@ $border-color-hover: $color-black;
 
 @media (max-width: $breakpoint-phone) {
   .mapboxgl-ctrl-geocoder {
-    width: 100%;
+    min-width: 90%;
   }
 }

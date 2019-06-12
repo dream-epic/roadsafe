@@ -20,6 +20,8 @@ export default function ServiceBot() {
   return (
     <ThemeProvider theme={theme}>
       <ChatBot
+        headerTitle={"Need Help?"}
+        placeholder={"Click an option given above"}
         steps={[
           {
             id: "welcome-1",
