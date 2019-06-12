@@ -3,8 +3,11 @@ font-family: 'Montserrat', sans-serif;
 font-family: 'Patua One', cursive;
 */
 
+$black: #000000;
+
 body {
   margin: 0;
+  color: $black;
   font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import ReactMapboxGl, { MapContext, Source } from "react-mapbox-gl";
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
-import "./PotholeMap.scss";
 import { db, dbfirestore } from "../../firebase";
 import swal from "sweetalert";
 import Spinner from "../Spinner";
+import "./PotholeMap.scss";
 
 const Map = ReactMapboxGl({
   accessToken: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN

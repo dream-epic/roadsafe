@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import ChatBot from "react-simple-chatbot";
 import { Link } from "react-router-dom";
+import ChatBot from "react-simple-chatbot";
 
 const theme = {
   background: "#f5f8fb",

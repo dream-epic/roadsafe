@@ -1,32 +1,29 @@
-$black: #000000;
 $blue: #14213d;
-$orange: #fca311;
 $platinum: #e5e5e5;
-$white: #ffffff;
 $breakpoint-lg: 992px;
 
 .container-fluid {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    background: $platinum;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background: $platinum;
 }
 
 .patched-iframe {
-    width: 800px;
-    height: 600px;
-    padding: 0; 
-    margin: 0;
-    border: 2px solid $blue;
-    border-radius: 2%;
+  width: 800px;
+  height: 600px;
+  padding: 0;
+  margin: 0;
+  border: 2px solid $blue;
+  border-radius: 2%;
 }
 
 .imbed-map {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 @media (max-width: $breakpoint-lg) {
-    .service-bot-wrapper {
-        padding-top: 3rem;
-    }
+  .service-bot-wrapper {
+    padding-top: 3rem;
+  }
 }

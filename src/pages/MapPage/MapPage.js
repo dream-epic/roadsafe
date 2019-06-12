@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import PotholeMap from "../../components/PotholeMap";
 import swal from "sweetalert";
+import PotholeMap from "../../components/PotholeMap";
 
 export default class MapPage extends Component {
   render() {

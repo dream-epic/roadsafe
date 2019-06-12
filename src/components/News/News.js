@@ -1,6 +1,6 @@
 import React from "react";
-import "./News.scss";
 import "bootstrap-css-only";
+import "./News.scss";
 
 export default function News(props) {
   return (

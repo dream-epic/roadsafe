@@ -1,7 +1,5 @@
 $black: #000000;
 $blue: #14213d;
-$orange: #fca311;
-$platinum: #e5e5e5;
 $white: #ffffff;
 
 .splash {
@@ -15,7 +13,7 @@ $white: #ffffff;
   position: relative;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
   z-index: 9999;
- 
+
   h1 {
     font-size: 2.8rem;
     font-family: "Patua One", cursive;
@@ -55,7 +53,7 @@ $white: #ffffff;
 
 .intro-icon {
   font-size: 15vh;
-  color: $blue
+  color: $blue;
 }
 
 .intro-icon-title {
