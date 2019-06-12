@@ -24,6 +24,7 @@ Our work is still at the MVP stage and we would work continuously in the future 
 
 ## Features
 
+- Mobile and Tablet Responsive, users can use app on any device
 - Latest Pothole-related news collected from CBS (constantly updating)
 - Real-time Map Visualizing Reported Potholes in the City of Chicago
     - Users can report potholes they find
