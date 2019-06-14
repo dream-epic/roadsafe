@@ -26,19 +26,24 @@ export default class HomePage extends Component {
       $("a.cbs-thumbnail-link.content-type-video")
         .has(".thumbnail-wrapper")
         .each((i, element) => {
-          const article = {
-            articleLink: $(element).attr("href"),
-            imgSrc: $(element).children()[0].children[0].children[0].attribs[
-              "data-src"
-            ],
-            title: $(element).attr("title"),
-            description: $(element).children()[1].children[1].children[0].data
-          };
+          try {
+            const article = {
+              articleLink: $(element).attr("href"),
+              imgSrc: $(element).children()[0].children[0].children[0].attribs[
+                "data-src"
+              ],
+              title: $(element).attr("title"),
+              description: $(element).children()[1].children[1].children[0].data
+            };
 
-          articles.push(article);
+            articles.push(article);
+          } catch (err) {
+            console.clear();
+          }
         });
 
       const selectedArticles = articles.slice(-12);
+      console.log(selectedArticles);
       this.setState({ data: selectedArticles });
     });
   }
