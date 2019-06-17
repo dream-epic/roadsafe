@@ -43,7 +43,6 @@ export default class HomePage extends Component {
         });
 
       const selectedArticles = articles.slice(-12);
-      console.log(selectedArticles);
       this.setState({ data: selectedArticles });
     });
   }
